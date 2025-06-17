@@ -1,0 +1,102 @@
+{% extends "common/base.html" %}
+
+{% block title %} Job Applications {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4 text-success">Applications for "{{ job.title }}"</h2>
+
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-body p-4">
+            {% if applications %}
+                <ul class="list-group list-group-flush">
+                    {% for application in applications %}
+                        <li class="list-group-item border rounded mb-3 shadow-sm p-3">
+                            <!-- Summary Section -->
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="d-flex align-items-center gap-3">
+                                <img src="{{ application.job_seeker.profile_pic.url }}" alt="Profile Picture"
+                                      class="rounded-circle border" width="50" height="50">
+                                     
+                                <div>
+                                    <h5 class="mb-1 text-primary">{{ application.full_name }}</h5>
+                                    <small class="text-muted"><b>Applied for: {{ job.title }}</b></small>
+                                </div>
+                              </div>
+                                <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#details-{{ application.id }}">
+                                    Open
+                                </button>
+                            </div>
+
+                            <!-- Collapsible Details Section -->
+                            <div class="collapse mt-3" id="details-{{ application.id }}">
+                                <div class="border-top pt-3">
+                                    <p class="mb-1">
+                                        <strong>Cover Letter:</strong> {{ application.cover_letter|truncatewords:20 }}
+                                    </p>
+                                    <p class="mb-1">
+                                        <strong>Resume:</strong>
+                                        <a href="{{ application.resume.url }}" class="text-success" target="_blank">
+                                            <i class="fas fa-file-pdf"></i> View
+                                        </a>
+                                    </p>
+                                    <p class="mb-1">
+                                        <strong>Status:</strong>
+                                        <span class="badge 
+                                            {% if application.status == 'Pending' %}bg-warning 
+                                            {% elif application.status == 'Accepted' %}bg-success 
+                                            {% elif application.status == 'Rejected' %}bg-danger 
+                                            {% endif %}
+                                        ">
+                                            {{ application.status }}
+                                        </span>
+                                    </p>
+
+                                    <!-- Update Form -->
+                                    <form method="post" class="mt-3">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="application_id" value="{{ application.id }}">
+
+                                        <div class="mb-2">
+                                            <label for="message" class="form-label fw-semibold">Message to Applicant:</label>
+                                            <textarea name="message" class="form-control" placeholder="E.g. Interview on 11th April at 3:00 PM. Google Meet: https://meet.google.com/xyz-abcd-efg">{{ application.message }}</textarea>
+                                            <small class="form-text text-muted">You can include interview date, time, and meeting link.</small>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between">
+                                            <select name="status" class="form-select form-select-sm w-25" required>
+                                                <option value="Pending" {% if application.status == 'Pending' %}selected{% endif %}>Pending</option>
+                                                <option value="Accepted" {% if application.status == 'Accepted' %}selected{% endif %}>Accepted</option>
+                                                <option value="Rejected" {% if application.status == 'Rejected' %}selected{% endif %}>Rejected</option>
+                                            </select>
+                                            <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                                        </div>
+                                    </form>
+
+                                    <!-- Message Preview -->
+                                    {% if application.message %}
+                                    <div class="mt-3 p-3 bg-light border rounded">
+                                        <strong><i class="fas fa-envelope me-1"></i>Message to Applicant:</strong><br>
+                                        <span class="text-muted">{{ application.message|urlize|linebreaks }}</span>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="text-center text-danger py-3">
+                    <p>No applications found.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="mt-4 d-flex gap-2">
+        <a href="{% url 'dashboard:dashboard' %}" class="btn btn-primary">Back to Dashboard</a>
+        <a href="{% url 'jobs:employer_job_list' %}" class="btn btn-secondary">Back to Jobs</a>
+    </div>
+</div>
+{% endblock %}
+

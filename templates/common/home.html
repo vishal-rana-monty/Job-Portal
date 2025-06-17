@@ -1,0 +1,246 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+{% block content %}
+
+<!-- Carousel Start -->
+<div class="container-fluid p-0">
+    <div class="owl-carousel header-carousel position-relative">
+        <div class="owl-carousel-item position-relative">
+            <img class="img-fluid" src="{% static 'img/carousel-1.jpg' %}" alt="">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                 style="background: rgba(43, 57, 64, .5);">
+                <div class="container">
+                    <div class="row justify-content-start">
+                        <div class="col-10 col-lg-8">
+                            <h1 class="display-3 text-white animated slideInDown mb-4">Find The Perfect Job That You
+                                Deserved</h1>
+                            <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at
+                                sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
+                             {% if request.user.role == "register_applicant" %}   
+                            <a href="{% url 'jobs:job_list' %}"
+                               class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Search A Job</a>
+                            {% elif request.user.role == "register_recruiter" %}
+                            <a href="{% url 'job_seeker:job_seeker_list' %}" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Find A Talent</a>
+                            
+                            {% endif %}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="owl-carousel-item position-relative">
+            <img class="img-fluid" src="{% static 'img/carousel-2.jpg' %}" alt="">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                 style="background: rgba(43, 57, 64, .5);">
+                <div class="container">
+                    <div class="row justify-content-start">
+                        <div class="col-10 col-lg-8">
+                            <h1 class="display-3 text-white animated slideInDown mb-4">Find The Best Startup Job That
+                                Fit You</h1>
+                            <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at
+                                sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
+                            {% if request.user.role == "register_applicant" %}
+                            <a href="{% url 'jobs:job_list' %}"
+                               class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Search A Job</a>
+                            {% elif request.user.role == "register_recruiter" %}
+
+                            <a href="{% url 'job_seeker:job_seeker_list' %}" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Find A Talent</a>
+
+                            
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Carousel End -->
+
+
+<!-- Search Start -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow border-0">
+                <div class="card-body p-4">
+                    <div class="row g-3 align-items-center">
+                        <!-- Job Search -->
+                        <div class="col-md-5">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="jobSearch" placeholder="Search jobs...">
+                                <label for="jobSearch"><i class="fas fa-briefcase me-2 text-primary"></i>Job title</label>
+                            </div>
+                        </div>
+
+                        <!-- Location Search -->
+                        <div class="col-md-5">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="locationSearch" placeholder="Search location...">
+                                <label for="locationSearch"><i class="fas fa-map-marker-alt me-2 text-primary"></i>Location</label>
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="col-md-2 d-grid">
+                            <button type="button" class="btn btn-primary py-3" onclick="filterJobs()">
+                                <i class="fas fa-search me-2"></i>Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+<!-- Search End -->
+
+<script>
+    function filterJobs() {
+        let jobInput = document.getElementById('jobSearch').value.toLowerCase();
+        let locationInput = document.getElementById('locationSearch').value.toLowerCase();
+        window.location.href = "{% url 'jobs:job_list' %}" + "?search=" + encodeURIComponent(jobInput) + "&location=" + encodeURIComponent(locationInput);
+    }
+</script>
+
+
+
+<!-- Category Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <h1 class="text-center mb-5 fw-bold text-success wow fadeInUp" data-wow-delay="0.1s">Explore By Category</h1>
+        <div class="row g-4">
+            {% for category in categories %}
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
+                    <div class="category-item rounded p-4 bg-white shadow-sm h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <i class="{{ category.icon }} fa-2x text-success mb-3"></i>
+                            <h5 class="mb-2">
+                                <a href="{% url 'jobs:jobs_by_category' category.id %}" class="text-dark">{{ category.name }}</a>
+                            </h5>
+                            <p class="text-success mb-0">
+                                <a href="{% url 'jobs:jobs_by_category' category.id %}">{{ category.jobs.count }} Vacancies</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+           <div class="text-center mt-4">
+             <a href="{% url 'jobs:jobs_category' %}" class="btn btn-primary px-4 py-2 fw-bold">View All Categogies</a>
+            </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!-- Category End -->
+
+
+<!-- About Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="row g-0 about-bg rounded overflow-hidden">
+                    <div class="col-6 text-start">
+                        <img class="img-fluid w-100" src="{% static 'img/about-1' %}.jpg">
+                    </div>
+                    <div class="col-6 text-start">
+                        <img class="img-fluid" src="{% static 'img/about-2.jpg' %}"
+                             style="width: 85%; margin-top: 15%;">
+                    </div>
+                    <div class="col-6 text-end">
+                        <img class="img-fluid" src="{% static 'img/about-3.jpg' %}" style="width: 85%;">
+                    </div>
+                    <div class="col-6 text-end">
+                        <img class="img-fluid w-100" src="{% static 'img/about-4.jpg' %}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <h1 class="mb-4">We Help To Get The Best Job And Find A Talent</h1>
+                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et
+                    eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                <p><i class="fa fa-check text-primary me-3"></i>Tempor erat elitr rebum at clita</p>
+                <p><i class="fa fa-check text-primary me-3"></i>Aliqu diam amet diam et eos</p>
+                <p><i class="fa fa-check text-primary me-3"></i>Clita duo justo magna dolore erat amet</p>
+                <a class="btn btn-primary py-3 px-5 mt-3" href="{% url 'about' %}">Read More</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+<!-- Job Listing Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <h1 class="text-center mb-5 fw-bold text-success wow fadeInUp" data-wow-delay="0.1s">Latest Job Listings</h1>
+        <div class="row g-4">
+
+            {% for job in jobs %}
+            <div class="col-12 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
+                <div class="job-item d-flex justify-content-between align-items-center p-4 shadow-sm bg-white rounded border">
+
+                    <!-- Left Section (Logo + Info) -->
+                    <div class="d-flex align-items-center">
+                        {% if job.company.logo %}
+                            <img src="{{ job.company.logo.url }}" alt="Company Logo" class="rounded border me-3" style="width: 80px; height: 80px; object-fit: cover;">
+                        {% else %}
+                            <div class="d-flex justify-content-center align-items-center rounded bg-light border me-3" style="width: 80px; height: 80px;">
+                                <i class="fas fa-building fa-2x text-secondary"></i>
+                            </div>
+                        {% endif %}
+                        <div class="text-start">
+                            <h5 class="fw-bold mb-2">{{ job.title }}</h5>
+                            <span class="me-3 text-muted"><i class="fa fa-map-marker-alt text-primary me-1"></i>{{ job.location }}</span>
+                            <span class="me-3 text-muted"><i class="far fa-clock text-primary me-1"></i>{{ job.job_type }}</span>
+                            <span class="me-0 text-muted"><i class="far fa-money-bill-alt text-primary me-1"></i>&#8377; {{ job.salary }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Section (Actions) -->
+                    <div class="d-flex flex-column align-items-end text-end">
+                        <div class="d-flex mb-2">
+                        
+                             <form action="{% url 'jobs:save_unsave_job' job.id %}" method="post" class="me-2">
+                                {% csrf_token %}
+                                {% if job.id in saved_job %}
+                                    <button type="submit" class="btn btn-danger btn-sm"> <i class="fa fa-bookmark"></i> Unsave</button>
+                                {% else %}
+                                    <button type="submit" class="btn btn-success btn-sm"> <i class="fa fa-bookmark"></i> Save</button>
+                                {% endif %}
+                            </form>
+                            <a href="{% url 'jobs:job_detail' job.id %}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i>View Details</a>
+                        </div>
+                        <small class="text-muted"><i class="far fa-calendar-alt text-primary me-1"></i>Posted on: {{ job.posted_at|date:"F d, Y" }}</small>
+                    </div>
+
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-danger">No jobs available at the moment.</p>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'jobs:job_list' %}" class="btn btn-primary px-4 py-2 fw-bold">View All Jobs</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

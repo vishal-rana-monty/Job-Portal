@@ -1,0 +1,147 @@
+{% extends "common/base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="card shadow-lg border-0 rounded-4 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <h1 class="display-5 fw-bold text-primary">Welcome, {{ request.user.full_name }}</h1>
+                    <p class="fs-5 text-muted">You're logged in as <strong>{{ request.user.email }}</strong>.</p>
+                </div>
+                
+                <div class="row g-4 align-items-start">
+                    <!-- Applicant Panel -->
+                    {% if request.user.role == "register_applicant" %}
+                    <nav class="col-md-4 col-lg-3 bg-white shadow-sm rounded-3 p-4 animated fadeInLeft">
+                        <h4 class="text-primary fw-bold">Applicant Panel</h4>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-3">
+                                <a href="{% url 'job_seeker:profile' %}" class="nav-link text-dark fw-semibold">
+                                    <i class="fa fa-user me-2"></i> View Profile
+                                </a>
+                            </li>
+                            <li class="nav-item mb-3">
+                                <a href="{% url 'job_seeker:create_profile' %}" class="nav-link text-dark fw-semibold">
+                                    <i class="fa fa-edit me-2"></i> Edit Profile
+                                </a>
+                            </li>
+                            <li class="nav-item mb-3">
+                                <a href="{% url 'jobs:job_list' %}" class="nav-link text-dark fw-semibold">
+                                    <i class="fa fa-briefcase me-2"></i> Apply Jobs
+                                </a>
+                            </li>
+                            <li class="nav-item mb-3">
+                                <a href="{% url 'jobs:saved_jobs_list' %}" class="nav-link text-dark fw-semibold">
+                                    <i class="fas fa-bookmark me-2"></i> Saved Jobs
+                                </a>
+                            </li>
+                             <li class="nav-item mb-3">
+                                <a href="{% url 'resume:resume_form' %}" class="nav-link text-dark fw-semibold">
+                                  <i class="fas fa-file-alt me-2"></i> Build Resume
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    
+                    <main class="col-md-8 col-lg-9">
+                        <div class="p-4 border rounded bg-light shadow-sm">
+                            {% if request.user.jobseeker %}
+                            <h5 class="mt-4 mb-3 fw-bold text-primary">My Applied Jobs</h5>
+                            {% if apply_jobs %}
+<div class="list-group shadow-sm">
+    {% for application in apply_jobs %}
+    <div class="list-group-item border-0 rounded-3 mb-3 bg-white">
+        <div class="d-flex justify-content-between align-items-center">
+            <h6 class="fw-bold text-primary mb-0"><a href="{% url 'jobs:job_detail' application.job.id %}" >{{ application.job.title }}</a></h6>
+            <small class="text-muted">
+                Applied on: {{ application.date_applied }} |
+                Status:
+                <span class="badge {% if application.status == 'Accepted' %}bg-success{% else %}bg-danger{% endif %}">
+                    {{ application.status }}
+                </span>
+            </small>
+        </div>
+
+        {% if application.message %}
+        <div class="mt-3 p-3 rounded bg-light border">
+            <p class="mb-1 fw-semibold text-dark">Message from Recruiter:</p>
+            <p class="mb-2 text-muted">{{ application.message|linebreaksbr|urlize }}</p>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p class="text-muted">You have not applied for any jobs yet.</p>
+{% endif %}
+
+                            {% else %}
+                            <div class="alert alert-warning shadow-sm p-4 rounded-3 text-center">
+                                <b>User has no profile yet.</b><br>
+                                Please create your profile to access job seeker features.<br><br>
+                                <a href="{% url 'job_seeker:create_profile' %}" class="btn btn-warning btn-lg px-4 py-2 rounded-pill shadow">Create Profile Now</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </main>
+
+                    <!-- Recruiter Panel -->
+                    {% elif request.user.role == "register_recruiter" %}
+                    <nav class="col-md-4 col-lg-3 bg-white shadow-sm rounded-3 p-4 animated fadeInLeft">
+                        <h4 class="text-primary fw-bold">Recruiter Panel</h4>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-3">
+                                <a href="{% url 'jobs:job_post' %}" class="nav-link text-dark fw-semibold">
+                                    <i class="fa fa-plus-circle me-2"></i> Post Jobs
+                                </a>
+                            </li>
+                            <li class="nav-item mb-3">
+                                <a href="{% url 'jobs:employer_job_list' %}" class="nav-link text-dark fw-semibold">
+                                    <i class="fa fa-list me-2"></i> My Job Posts
+                                </a>
+                            </li>
+                            <li class="nav-item mb-3">
+                                <a href="{% url 'jobs:employer_job_list' %}" class="nav-link text-dark fw-semibold">
+                                    <i class="fa fa-file-alt me-2"></i> View Applications
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'company:company_profile' %}" class="nav-link text-dark fw-semibold">
+                                    <i class="fa fa-building me-2"></i> My Company Profile 
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    
+                    <main class="col-md-8 col-lg-9">
+                        <div class="py-4 animated fadeInRight">
+                            {% if not request.user.company %}
+                            <div class="alert alert-warning shadow-sm p-4 rounded-3 text-center">
+                                <b>You don't have a company profile yet.</b><br>
+                                Please create your company profile to access recruiter features.<br><br>
+                                <a href="{% url 'company:create_company' %}" class="btn btn-warning btn-lg px-4 py-2 rounded-pill shadow">Create Company Now</a>
+                            </div>
+                            {% else %}
+                            <div class="p-4 border rounded bg-light shadow-sm">
+                                <h5 class="fw-bold text-primary">Company Name: {{ request.user.company.name }}</h5>
+                                <p>Website: <a href="{{ request.user.company.website }}" target="_blank">Visit</a></p>
+                                <p>{{ request.user.company.description }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </main>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% else %}
+<p class="text-center mt-5">Please log in to access your dashboard.</p>
+{% endif %}
+{% endblock %}

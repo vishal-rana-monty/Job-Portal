@@ -1,0 +1,31 @@
+{% extends "common/base.html" %}
+{% block title %}
+  Job Category
+{% endblock %}
+
+
+{% block content %}
+<div class="container-xxl py-5">
+    <div class="container">
+          <h1 class="text-center mb-5 fw-bold text-success wow fadeInUp" data-wow-delay="0.1s">Jobs Category</h1>
+        <div class="row g-4">
+            {% for category in categories %}
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
+                    <div class="category-item rounded p-4 bg-white shadow-sm h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <i class="{{ category.icon }} fa-2x text-success mb-3"></i>
+                            <h5 class="mb-2">
+                                <a href="{% url 'jobs:jobs_by_category' category.id %}" class="text-dark">{{ category.name }}</a>
+                            </h5>
+                            <p class="text-success mb-0">
+                                <a href="{% url 'jobs:jobs_by_category' category.id %}">{{ category.jobs.count }} Vacancies</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

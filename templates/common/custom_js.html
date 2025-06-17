@@ -1,0 +1,20 @@
+<!-- jQuery (if not already present) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Select2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('.js-skill-select').select2({
+      placeholder: "Select required skills",
+      width: '100%',
+      templateSelection: function(skill) {
+        if (!skill.id) return skill.text;
+        return $(`<span class="badge bg-primary me-1 p-2">${skill.text}</span>`);
+      },
+      escapeMarkup: function (m) { return m; },
+      maximumSelectionLength: 6
+    });
+  });
+</script>

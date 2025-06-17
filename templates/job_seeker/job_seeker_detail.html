@@ -1,0 +1,83 @@
+{% extends "common/base.html" %}
+{% load static %}
+
+{% block title %}
+  {{ jobseeker.full_name }} - Job Seeker Profile
+{% endblock %}
+
+{% block content %}
+  
+<!-- Job Seeker Details -->
+<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row gy-5 gx-4">
+            <!-- Job Seeker Left Section -->
+            <div class="col-lg-8">
+                <!-- Job Seeker Header -->
+                <div class="d-flex align-items-center mb-5">
+                    {% if jobseeker.profile_pic %}
+                      <div class="flex-shrink-0 d-flex align-items-center justify-content-center border rounded bg-light" style="width: 100px; height: 100px;">
+                        <img src="{{ jobseeker.profile_pic.url }}" alt="Profile Picture" class="img-fluid rounded" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+                      </div>
+                    {% else %}
+                         <div class="flex-shrink-0 d-flex align-items-center justify-content-center border rounded bg-light" style="width: 100px; height: 100px;">
+                               <i class="fas fa-user fa-3x text-primary"></i>
+                           </div>
+                    {% endif %}
+
+                    <div class="text-start ps-4">
+                        <h3 class="mb-3 text-primary">{{ jobseeker.full_name }}</h3>
+                        <span class="text-truncate me-3">
+                            <i class="fa fa-phone-alt text-primary me-2"></i>{{ jobseeker.contact_number }}
+                        </span>
+                        <span class="text-truncate me-3">
+                            <i class="fab fa-linkedin text-primary me-2"></i><a href="{{ jobseeker.linkedin }}" target="_blank">{{ jobseeker.linkedin }}</a>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Education Section -->
+                <div class="mb-5">
+                    <h4 class="mb-3">Education</h4>
+                    <p>{{ jobseeker.education }}</p>
+
+                    <!-- Experience Section -->
+                    <h4 class="mb-3">Experience</h4>
+                    <p>{{ jobseeker.experience }}</p>
+
+                    <!-- Skills Section -->
+                    <h4 class="mb-3">Skills</h4>
+                    <p>{{ jobseeker.skills|default:"No skills mentioned" }}</p>
+                    
+                    <!-- Resume Section -->
+                    <h4 class="mb-3">Resume</h4>
+                    {% if jobseeker.resume %}
+                        <a href="{{ jobseeker.resume.url }}" target="_blank" class="btn btn-success">Download Resume</a>
+                    {% else %}
+                        <p>No resume uploaded.</p>
+                    {% endif %}
+                </div>
+
+                
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="col-lg-4">
+                <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+                    <h4 class="mb-4">Contact Information</h4>
+                    <p><i class="fa fa-envelope text-primary me-2"></i>{{ jobseeker.contact_number }}</p>
+                    <p><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ jobseeker.address }}</p>
+                </div>
+
+                <!-- Additional Section (Optional) -->
+                <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
+                    <h4 class="mb-4">About Me</h4>
+                    <p>My name is {{jobseeker.full_name}}.</p><br> <p>For Contact me : {{jobseeker.contact_number}}</p><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Job Seeker Detail End -->
+
+{% endblock %}

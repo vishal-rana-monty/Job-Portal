@@ -1,0 +1,42 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block title %} Cookies {% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Cookies Policy</h2>
+  <div class="card shadow p-4">
+    <p>This Cookies Policy explains how [Your Job Portal Name] uses cookies and similar tracking technologies when you visit our platform.</p>
+
+    <h4>1. What Are Cookies?</h4>
+    <p>Cookies are small text files stored on your device to enhance user experience, track usage, and improve functionality.</p>
+
+    <h4>2. How We Use Cookies</h4>
+    <ul>
+        <li>To enhance website functionality and performance.</li>
+        <li>To analyze user behavior and improve services.</li>
+        <li>To remember your preferences and settings.</li>
+    </ul>
+
+    <h4>3. Types of Cookies We Use</h4>
+    <ul>
+        <li><strong>Essential Cookies:</strong> Necessary for website operation.</li>
+        <li><strong>Analytical Cookies:</strong> Help us understand how users interact with our website.</li>
+        <li><strong>Advertising Cookies:</strong> Used for targeted advertising and marketing.</li>
+    </ul>
+
+    <h4>4. Managing Your Cookie Preferences</h4>
+    <p>You can manage or disable cookies through your browser settings. However, some features may not function properly if cookies are disabled.</p>
+
+    <h4>5. Updates to This Policy</h4>
+    <p>We may update this policy from time to time. Please check this page periodically for any changes.</p>
+
+    <h4>6. Contact Us</h4>
+    <p>If you have any questions about our Cookies Policy, please contact us at <strong>[Your Contact Email]</strong>.</p>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home Page</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

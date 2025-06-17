@@ -1,0 +1,54 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block title %} Term & Conditions {% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Terms and Conditions</h2>
+    <div class="card shadow p-4">
+        <p><strong>Effective Date:</strong> [Insert Date]</p>
+        <p>Welcome to our Job Portal. By using our platform, you agree to the following terms and conditions. Please read them carefully.</p>
+
+        <h4>1. Acceptance of Terms</h4>
+        <p>By accessing or using our platform, you acknowledge that you have read, understood, and agree to be bound by these terms.</p>
+
+        <h4>2. User Responsibilities</h4>
+        <ul>
+            <li>You must provide accurate and up-to-date information during registration.</li>
+            <li>You are responsible for maintaining the confidentiality of your account credentials.</li>
+            <li>You must not engage in fraudulent, abusive, or illegal activities on our platform.</li>
+        </ul>
+
+        <h4>3. Job Listings and Applications</h4>
+        <ul>
+            <li>Employers must ensure job listings are accurate and comply with all applicable laws.</li>
+            <li>Job seekers must provide truthful information in applications and resumes.</li>
+            <li>We do not guarantee job placement or employer responses.</li>
+        </ul>
+
+        <h4>4. Prohibited Activities</h4>
+        <ul>
+            <li>Posting misleading or fraudulent job listings.</li>
+            <li>Sharing user data without consent.</li>
+            <li>Attempting to hack or disrupt platform operations.</li>
+        </ul>
+
+        <h4>5. Termination of Use</h4>
+        <p>We reserve the right to suspend or terminate your account if you violate these terms or engage in activities that harm our platform or users.</p>
+
+        <h4>6. Limitation of Liability</h4>
+        <p>We are not responsible for any damages, losses, or liabilities arising from job listings, employer interactions, or misuse of our platform.</p>
+
+        <h4>7. Changes to Terms</h4>
+        <p>We may update these terms periodically. Continued use of the platform after updates constitutes acceptance of the revised terms.</p>
+
+        <h4>8. Contact Us</h4>
+        <p>For any questions or concerns, please contact us at [Your Contact Email].</p>
+
+        <p>By using our platform, you agree to these Terms and Conditions. Thank you for choosing [Your Job Portal Name]!</p>
+        <div class="text-center mt-4">
+            <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home Page</a>
+        </div> 
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "common/base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}
+  Job Seeker Profile
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-light py-5">
+  <div class="container">
+
+    <!-- Card -->
+    <div class="card shadow-lg rounded-4 p-4 bg-white mx-auto position-relative" style="max-width: 700px;">
+
+        <!-- Edit Button on Top-Right -->
+        <a href="{% url 'job_seeker:create_profile' %}" class="btn btn-outline-primary px-3 py-1 shadow-sm rounded-pill position-absolute" style="top: 20px; right: 20px; z-index: 10;">
+            <i class="fa fa-edit me-1"></i> Edit
+        </a>
+
+        <!-- Profile Picture -->
+        <div class="text-center mb-4">
+         <div class="position-relative d-inline-block">
+          {% if user.jobseeker.profile_pic %}
+            <img src="{{ user.jobseeker.profile_pic.url }}" alt="Profile Picture" class="rounded-circle border p-1 shadow-sm" style="width: 120px; height: 120px; object-fit: cover;">
+          {% else %}
+            <div class="rounded-circle border p-1 shadow-sm bg-secondary d-flex justify-content-center align-items-center" style="width: 120px; height: 120px;">
+              <i class="fa fa-user text-white" style="font-size: 40px;"></i>
+            </div>
+          {% endif %}
+         </div>
+        </div>
+
+
+        <!-- Profile Details -->
+        <form method="post" enctype="multipart/form-data" class="space-y-6">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Full Name</label>
+                <input type="text" name="full_name" value="{{ user.jobseeker.full_name }}" class="form-control bg-light" readonly>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Email</label>
+                <input type="email" name="email" value="{{ user.email }}" class="form-control bg-light" readonly>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Education</label>
+                <textarea name="education" rows="3" class="form-control bg-light" readonly>{{ user.jobseeker.education }}</textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Experience</label>
+                <textarea name="experience" rows="3" class="form-control bg-light" readonly>{{ user.jobseeker.experience }}</textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Skills</label>
+                <input type="text" name="skills" value="{{ user.jobseeker.skills }}" class="form-control bg-light" readonly>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Resume</label>
+                {% if user.jobseeker.resume %}
+                    <a href="{{ user.jobseeker.resume.url }}" target="_blank" class="btn btn-sm btn-outline-success w-100">View Current Resume</a>
+                {% else %}
+                    <p class="text-muted">No resume uploaded.</p>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Address</label>
+                <textarea name="address" rows="2" class="form-control bg-light" readonly>{{ user.jobseeker.address }}</textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Contact Number</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-light">+91</span>
+                    <input type="text" name="contact_number" value="{{ user.jobseeker.contact_number }}" class="form-control bg-light" readonly>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">LinkedIn Profile</label>
+                {% if user.jobseeker.linkedin %}
+                    <a href="{{ user.jobseeker.linkedin }}" target="_blank" class="form-control bg-light text-primary" style="text-decoration: underline;">{{ user.jobseeker.linkedin }}</a>
+                {% else %}
+                    <input type="text" class="form-control bg-light" value="Not Provided" readonly>
+                {% endif %}
+            </div>
+
+            <div class="mb-4">
+  <label class="form-label fw-semibold">Show profile publicly to companies?</label>
+  <p class="form-control-plaintext">
+    {{ user.jobseeker.is_public|yesno:"Yes,No" }}
+  </p>
+</div>
+
+
+        </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

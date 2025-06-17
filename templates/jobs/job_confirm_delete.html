@@ -1,0 +1,25 @@
+{% extends "common/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4 p-4">
+        <div class="card-body text-center">
+
+            <h2 class="mb-4 text-danger">Delete Job</h2>
+            <p class="mb-4">Are you sure you want to delete <strong>"{{ job.title }}"</strong>?</p>
+
+            <form method="post" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger px-4 py-2 rounded-pill fw-bold shadow-sm">
+                    Yes, Delete
+                </button>
+            </form>
+
+            <a href="{% url 'jobs:employer_job_list' %}" class="btn btn-secondary px-4 py-2 rounded-pill fw-bold shadow-sm ms-3">
+                Cancel
+            </a>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

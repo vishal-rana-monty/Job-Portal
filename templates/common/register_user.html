@@ -1,0 +1,210 @@
+{% extends 'common/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title %} Register {% endblock %}
+{% block content %}
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center justify-content-center">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <h1 class="mb-4 text-capitalize">{% lorem 5 w %}</h1>
+                <p class="mb-4">{% lorem 25 w %}</p>
+                <p class="text-capitalize"><i class="fa fa-check text-primary me-3"></i>{% lorem 10 w %}</p>
+                <p class="text-capitalize"><i class="fa fa-check text-primary me-3"></i>{% lorem 10 w %}</p>
+                <p class="text-capitalize"><i class="fa fa-check text-primary me-3"></i>{% lorem 10 w %}</p>
+            </div>
+
+            <div class="signup-container shadow-lg rounded-4 p-4 bg-white bg-opacity-75 position-relative" style="backdrop-filter: blur(10px); max-width: 400px; width: 100%;">
+
+                <!-- Form Title -->
+                <h3 id="formTitle" class="text-center mb-4 fw-bold text-primary">Register Yourself</h3>
+
+                <!-- Form -->
+                <form method="POST" enctype="multipart/form-data" id="registrationForm">
+                    {% csrf_token %}
+
+                    {% if messages %}
+                    <div class="alert-messages">
+                        {% for message in messages %}
+                            <div class="alert {% if message.tags %}alert={{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                              {{ message }}
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <!-- Inline Role Selector -->
+                    <div class="d-flex justify-content-center mb-4 gap-4">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="role" id="roleApplicant" value="register_applicant" required checked>
+                            <label class="form-check-label" for="roleApplicant">
+                                <i class="fas fa-user me-1"></i> Applicant
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="role" id="roleRecruiter" value="register_recruiter" required>
+                            <label class="form-check-label" for="roleRecruiter">
+                                <i class="fas fa-building me-1"></i> Recruiter
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="form-floating mb-3">
+                        {{ form.email|add_class:"form-control" }}
+                        <label for="id_email"><i class="fas fa-envelope me-2"></i>Email Address</label>
+                        {% if form.email.errors %}
+                            <div class="error">{{ form.email.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Full Name / Company Name Field -->
+                    <div class="form-floating mb-3">
+                        {{ form.full_name|add_class:"form-control" }}
+                        <label for="id_full_name" id="nameLabel"><i class="fas fa-user me-2"></i> Full Name / Company Name</label>
+                        {% if form.full_name.errors %}
+                            <div class="error">{{ form.full_name.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Phone Number Field -->
+                    <div class="form-floating mb-3">
+                        {{ form.phone_number|add_class:"form-control" }}
+                        <label for="id_phone_number"><i class="fas fa-phone me-2"></i>Phone Number</label>
+                        {% if form.phone_number.errors %}
+                            <div class="error">{{ form.phone_number.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="form-floating mb-3">
+                        {{ form.password1|add_class:"form-control" }}
+                        <label for="id_password1"><i class="fas fa-lock me-2"></i>Password</label>
+                        {% if form.password1.errors %}
+                            <div class="error">{{ form.password1.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Confirm Password Field -->
+                    <div class="form-floating mb-3">
+                        {{ form.password2|add_class:"form-control" }}
+                        <label for="id_password2"><i class="fas fa-lock me-2"></i>Confirm Password</label>
+                        {% if form.password2.errors %}
+                            <div class="error">{{ form.password2.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-100 btn btn-primary">Sign Up</button>
+
+                    <small class="text-muted d-block text-center mt-3">
+                        Already have an account? <a href="{% url 'login' %}" class="text-primary fw-bold">Login</a>
+                    </small>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JS to change label based on radio selection -->
+<script>
+    const applicantRadio = document.getElementById('roleApplicant');
+    const recruiterRadio = document.getElementById('roleRecruiter');
+    const nameLabel = document.getElementById('nameLabel');
+
+    function updateLabel() {
+        if (applicantRadio.checked) {
+            nameLabel.innerHTML = '<i class="fas fa-user me-2"></i> Full Name';
+        } else if (recruiterRadio.checked) {
+            nameLabel.innerHTML = '<i class="fas fa-building me-2"></i> Company Name';
+        }
+    }
+
+    // On page load
+    document.addEventListener('DOMContentLoaded', updateLabel);
+
+    // On change
+    applicantRadio.addEventListener('change', updateLabel);
+    recruiterRadio.addEventListener('change', updateLabel);
+
+
+
+    // Password validation
+    document.addEventListener('DOMContentLoaded', function () {
+        const password1 = document.getElementById('id_password1');
+        const password2 = document.getElementById('id_password2');
+
+        // Create separate error message containers
+        const passwordError = document.createElement('div');
+        passwordError.classList.add('text-danger', 'mt-1');
+        password1.parentNode.appendChild(passwordError);
+
+        const confirmPasswordError = document.createElement('div');
+        confirmPasswordError.classList.add('text-danger', 'mt-1');
+        password2.parentNode.appendChild(confirmPasswordError);
+
+        function validatePasswords() {
+            let errors = [];
+            let confirmPasswordErrors = [];
+
+            const passwordValue = password1.value;
+            const confirmPasswordValue = password2.value;
+
+            // Regex for password complexity
+            const uppercase = /[A-Z]/;
+            const lowercase = /[a-z]/;
+            const number = /[0-9]/;
+            const specialChar = /[!@#$%^&*(),.?":{}|<>]/;
+
+            // Validate main password
+            if (passwordValue.length < 8) {
+                errors.push("Password must be at least 8 characters long.");
+            }
+            if (!uppercase.test(passwordValue)) {
+                errors.push("Password must contain at least one uppercase letter.");
+            }
+            if (!lowercase.test(passwordValue)) {
+                errors.push("Password must contain at least one lowercase letter.");
+            }
+            if (!number.test(passwordValue)) {
+                errors.push("Password must contain at least one numeric digit.");
+            }
+            if (!specialChar.test(passwordValue)) {
+                errors.push("Password must contain at least one special character.");
+            }
+
+            // Validate password confirmation
+            if (passwordValue !== confirmPasswordValue && confirmPasswordValue.length > 0) {
+                confirmPasswordErrors.push("Confirm password do not match password.");
+            }
+
+            // Show errors
+            passwordError.innerHTML = errors.join('<br>');
+            confirmPasswordError.innerHTML = confirmPasswordErrors.join('<br>');
+
+            // Add/remove invalid class
+            password1.classList.toggle('is-invalid', errors.length > 0);
+            password2.classList.toggle('is-invalid', confirmPasswordErrors.length > 0);
+        }
+
+        password1.addEventListener('input', validatePasswords);
+        password2.addEventListener('input', validatePasswords);
+    });
+
+
+
+    // Auto hide
+
+    setTimeout(function() {
+        let alerts = document.querySelectorAll('.alert');
+        alerts.forEach(alert => {
+            alert.classList.add('fade');
+            setTimeout(() => alert.remove(), 500);
+        });
+    }, 5000);
+
+</script>
+
+{% endblock %}

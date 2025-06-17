@@ -1,0 +1,23 @@
+<!-- filepath: JobPortal/templates/messaging/message_detail.html -->
+{% extends "common/base.html" %}
+{% block title %}Message Detail{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Message Detail</h2>
+    <div class="card">
+        <div class="card-header">
+            <strong>From:</strong> {{ message.sender.username }}<br>
+            <strong>To:</strong> {{ message.receiver.username }}<br>
+            <strong>Subject:</strong> {{ message.subject }}<br>
+            <small class="text-muted">{{ message.timestamp|date:"F d, Y H:i" }}</small>
+        </div>
+        <div class="card-body">
+            <p>{{ message.body|linebreaks }}</p>
+            {% if message.attachment %}
+                <strong>Attachment:</strong> 
+                <a href="{{ message.attachment.url }}" target="_blank">Download</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+
+{% extends "common/base.html" %}
+{% load static %}
+
+{% block title %}Contact{% endblock %}
+{% block content %}
+{% block title %}Sent Messages{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Sent Messages</h2>
+    <div class="list-group">
+        {% for message in messages %}
+            <div class="list-group-item">
+                <strong>To:</strong> {{ message.receiver.username }}<br>
+                <strong>Subject:</strong> {{ message.subject }}<br>
+                <small class="text-muted">{{ message.timestamp|date:"F d, Y H:i" }}</small>
+            </div>
+        {% empty %}
+            <p class="text-center text-muted">No sent messages found.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

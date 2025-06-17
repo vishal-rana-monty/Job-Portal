@@ -1,0 +1,38 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block title %} Login Required {% endblock %}
+
+{% block content %}
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center justify-content-center">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.2s">
+                <div class="login-container shadow-lg rounded-4 p-4 bg-white bg-opacity-75 position-relative text-center"
+                     style="backdrop-filter: blur(10px); max-width: 400px; width: 100%;">
+
+                    <!-- Floating Animated Icon -->
+                    <div class="floating-icon text-center mb-3">
+                        <i class="fas fa-lock text-danger display-4"></i>
+                    </div>
+
+                    <!-- Title -->
+                    <h2 class="text-center mb-3 text-danger fw-bold">Access Restricted</h2>
+                    <p class="mb-4 fs-5 text-muted">You must <strong>log in</strong> to access this page.</p>
+
+                    <!-- CTA Button -->
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'login' %}?next={{ request.path }}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-sign-in-alt me-2"></i> Login Now
+                        </a>
+                    </div>
+
+                    <!-- Additional Message -->
+                    <small class="d-block text-muted mt-3">
+                        Don’t have an account? <a href="{% url 'register_user' %}" class="fw-bold text-primary">Sign Up</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

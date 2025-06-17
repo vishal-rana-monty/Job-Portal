@@ -1,0 +1,127 @@
+{% extends "common/base.html" %}
+
+{% block title %}
+  Job 
+{% endblock %}
+
+{% block content %}
+
+<!-- Search & Filter Section -->
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow border-0">
+                <div class="card-body p-4">
+                    <form method="GET" action="{% url 'jobs:job_list' %}" class="input-group">
+                        <!-- Job Search -->
+                        <div class="form-floating flex-grow-1 me-2">
+                            <input type="text" class="form-control" name="q" id="jobSearch" placeholder="Search jobs..." value="{{ search_query }}">
+                            <label for="jobSearch"><i class="fas fa-briefcase me-2 text-primary"></i>Search jobs...</label>
+                        </div>
+
+                        <!-- Location Search -->
+                        <div class="form-floating flex-grow-1 me-2">
+                            <input type="text" class="form-control" name="location" id="locationSearch" placeholder="Search location..." value="{{ search_location }}">
+                            <label for="locationSearch"><i class="fas fa-map-marker-alt me-2 text-primary"></i>Location</label>
+                        </div>
+
+                        <!-- Search Button -->
+                        <button type="submit" class="btn btn-primary px-4">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Job Listings -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <h1 class="text-center mb-5 fw-bold text-success">Job Listings</h1>
+        <div class="row g-4">
+            {% for job in jobs %}
+            <div class="col-12 job-container">
+                <div class="job-item d-flex justify-content-between align-items-center p-4 shadow-sm bg-white rounded border">
+
+                    <!-- Left Section (Logo + Info) -->
+                    <div class="d-flex align-items-center">
+                        {% if job.company.logo %}
+                            <img src="{{ job.company.logo.url }}" alt="Company Logo" class="rounded border me-3" style="width: 80px; height: 80px; object-fit: cover;">
+                        {% else %}
+                            <div class="d-flex justify-content-center align-items-center rounded bg-light border me-3" style="width: 80px; height: 80px;">
+                                <i class="fas fa-building fa-2x text-secondary"></i>
+                            </div>
+                        {% endif %}
+                        <div class="text-start">
+                            <h5 class="fw-bold mb-2 job-title">{{ job.title }}</h5>
+                            <span class="me-3 text-muted job-category"><i class="fa fa-th-large text-primary me-1"></i>{{ job.category }}</span>
+                            <span class="me-3 text-muted job-location"><i class="fa fa-map-marker-alt text-primary me-1"></i>{{ job.location }}</span>
+                            <span class="me-3 text-muted"><i class="far fa-clock text-primary me-1"></i>{{ job.job_type }}</span>
+                            <span class="me-0 text-muted"><i class="far fa-money-bill-alt text-primary me-1"></i>&#8377; {{ job.salary }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Section (Actions) -->
+                    <div class="d-flex flex-column align-items-end text-end">
+                        <div class="d-flex mb-2">
+                            <form action="{% url 'jobs:save_unsave_job' job.id %}" method="post">
+                                {% csrf_token %}
+                                {% if job.id in saved_job %}
+                                    <button type="submit" class="btn btn-danger btn-sm"> <i class="fa fa-bookmark"></i> Unsave</button>
+                                {% else %}
+                                    <button type="submit" class="btn btn-success btn-sm"> <i class="fa fa-bookmark"></i> Save</button>
+                                {% endif %}
+                            </form>
+                            <a href="{% url 'jobs:job_detail' job.id %}" class="btn btn-primary btn-sm ms-2"><i class="fa fa-eye"></i>View Details</a>
+                        </div>
+                        <small class="text-muted"><i class="far fa-calendar-alt text-primary me-1"></i>Posted on: {{ job.posted_at|date:"F d, Y" }}</small>
+                    </div>
+
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-danger">No jobs available at the moment.</p>
+            </div>
+           {% endfor %}
+            {% if is_paginated %}
+<div class="d-flex justify-content-center mt-4">
+    <nav>
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?q={{ search_query }}&location={{ search_location }}&page=1">&laquo; First</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?q={{ search_query }}&location={{ search_location }}&page={{ page_obj.previous_page_number }}">Previous</a>
+                </li>
+            {% endif %}
+
+            <li class="page-item disabled">
+                <span class="page-link">Page {{ page_obj.number }} of {{ paginator.num_pages }}</span>
+            </li>
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?q={{ search_query }}&location={{ search_location }}&page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?q={{ search_query }}&location={{ search_location }}&page={{ paginator.num_pages }}">Last &raquo;</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endif %}
+
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

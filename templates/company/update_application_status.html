@@ -1,0 +1,18 @@
+{% extends "common/base.html" %}
+
+{% block title %}
+    Update Application Status
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Update Status for {{ application.job_seeker }} - {{ application.job.title }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Update Status</button>
+    </form>
+    <a href="{% url 'company:application_list' %}" class="btn btn-secondary mt-3">Back to Applications</a>
+    <a href="{% url 'dashboard:dashboard' %}" class="btn btn-primary mt-3">Back to Dashboard</a>
+</div>
+{% endblock %}

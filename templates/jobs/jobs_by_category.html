@@ -1,0 +1,71 @@
+{% extends "common/base.html" %}
+{% block title %}
+  Jobs in {{ category.name }}
+{% endblock %}
+
+{% block content %}
+
+<!-- Banner Section -->
+<div class="container-xxl py-5 bg-light mb-5">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.1s">
+        <div class="d-flex flex-column align-items-center justify-content-center">
+            <!-- Icon -->
+            <div class="mb-3">
+                <i class="{{ category.icon }} fa-4x text-success"></i>
+            </div>
+            <!-- Title -->
+            <h1 class="fw-bold text-success mb-3">Jobs in {{ category.name }}</h1>
+            <p class="text-muted">Browse the latest jobs in the <strong>{{ category.name }}</strong> sector and find your next opportunity!</p>
+        </div>
+    </div>
+</div>
+
+<!-- Job Listings -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-4">
+
+            {% for job in jobs %}
+            <div class="col-12 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
+                <div class="job-item d-flex justify-content-between align-items-center p-4 shadow-sm bg-white rounded border">
+
+                    <!-- Left Section -->
+                    <div class="d-flex align-items-center">
+                        {% if job.company.logo %}
+                            <img src="{{ job.company.logo.url }}" alt="Company Logo" class="rounded border me-3" style="width: 80px; height: 80px; object-fit: cover;">
+                        {% else %}
+                            <div class="d-flex justify-content-center align-items-center rounded bg-light border me-3" style="width: 80px; height: 80px;">
+                                <i class="fas fa-building fa-2x text-secondary"></i>
+                            </div>
+                        {% endif %}
+                        <div class="text-start">
+                            <h5 class="fw-bold mb-2 job-title">{{ job.title }}</h5>
+                            <span class="me-3 text-muted job-location"><i class="fa fa-th-large text-primary me-1"></i>{{ job.category }}</span>
+                            <span class="me-3 text-muted job-location"><i class="fa fa-map-marker-alt text-primary me-1"></i>{{ job.location }}</span>
+                            <span class="me-3 text-muted"><i class="far fa-clock text-primary me-1"></i>{{ job.job_type }}</span>
+                            <span class="me-0 text-muted"><i class="far fa-money-bill-alt text-primary me-1"></i>{{ job.salary }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Section -->
+                    <div class="d-flex flex-column align-items-end text-end">
+                        <div class="d-flex mb-2">
+                            <a href="#" class="btn btn-light btn-sm btn-square me-2"><i class="far fa-heart text-primary"></i></a>
+                            <a href="{% url 'jobs:job_detail' job.id %}" class="btn btn-primary btn-sm">View Details</a>
+                        </div>
+                        <small class="text-muted"><i class="far fa-calendar-alt text-primary me-1"></i>Posted on: {{ job.posted_at|date:"F d, Y" }}</small>
+                    </div>
+
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-danger">No jobs available in this category.</p>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block title %} Login Page {% endblock %}
+{% block content %}
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <h1 class="mb-4 text-capitalize">{% lorem 5 w %}</h1>
+                <p class="mb-4">{% lorem 25 w %}</p>
+                <p class="text-capitalize"><i class="fa fa-check text-primary me-3"></i>{% lorem 10 w %}</p>
+                <p class="text-capitalize"><i class="fa fa-check text-primary me-3"></i>{% lorem 10 w %}</p>
+                <p class="text-capitalize"><i class="fa fa-check text-primary me-3"></i>{% lorem 10 w %}</p>
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="login-container shadow-lg rounded-4 p-4 bg-white bg-opacity-75 position-relative"
+                     style="backdrop-filter: blur(10px); max-width: 400px; width: 100%;">
+
+                    <!-- Floating Animated Icon -->
+                    <div class="floating-icon text-center mb-3">
+                        <i class="fas fa-user-circle text-primary display-4"></i>
+                    </div>
+
+                    <!-- Title -->
+                    <h2 class="text-center mb-3 text-primary fw-bold">Welcome!</h2>
+
+
+                    <!-- Django Messages -->
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                    {% if request.GET.next %}
+            <div class="alert alert-warning text-center py-2" role="alert">
+                Please login to continue.
+            </div>
+        {% endif %}
+
+
+                    <form method="POST" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            {{ form.as_p }}
+                        </div>
+
+
+                        <!-- Email Field -->
+                        <div class="form-floating mb-3">
+                            <input type="email" name="email" class="form-control input-field" id="email"
+                                   placeholder="name@example.com" required>
+                            <label for="email"><i class="fas fa-envelope me-2"></i>Email address</label>
+                        </div>
+
+
+                        <!-- Password Field with Show/Hide Checkbox -->
+                        <div class="form-floating mb-3 position-relative">
+                            <input type="password" name="password" class="form-control input-field" id="password"
+                                   placeholder="Password" required>
+                            <label for="password"><i class="fas fa-lock me-2"></i>Password</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="showPassword"
+                                   onclick="togglePassword()">
+                            <label class="form-check-label" for="showPassword">Show Password</label>
+                        </div>
+
+                        <!-- Remember Me & Forgot Password -->
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="rememberMe">
+                                <label class="form-check-label text-muted" for="rememberMe">Remember Me</label>
+                            </div>
+                            <a href="{% url 'forget_password:password_reset_request' %}"
+                               class="text-decoration-none text-primary fw-bold">Forgot Password?</a>
+                        </div>
+
+                        <!-- Sign In Button with Animation -->
+                        <button class="btn btn-primary w-100 py-2 mt-3 btn-animated" type="submit">
+                            <i class="fas fa-sign-in-alt me-2"></i> Login
+                        </button>
+
+                        <!-- Divider -->
+                        <div class="text-center my-3 text-muted">or</div>
+
+
+                        <!-- Signup Link -->
+                        <small class="text-muted d-block text-center mt-3">
+                            Don't have an account? <a href="{% url 'register_user' %}" class="text-primary fw-bold">Sign
+                            Up</a>
+                        </small>
+
+                        
+
+                    </form>
+                </div>
+            </div>
+                        <script>
+                            function togglePassword() {
+                            var passwordField = document.getElementById("password");
+                            var showPasswordCheckbox = document.getElementById("showPassword");
+                            passwordField.type = showPasswordCheckbox.checked ? "text" : "password";
+                            }
+                        </script>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

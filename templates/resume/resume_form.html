@@ -1,0 +1,137 @@
+{% extends "common/base.html" %}
+{% load widget_tweaks %}
+{% block title %} Create Resume {% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+  <div class="card shadow p-4 rounded-4">
+    <h2 class="text-primary text-center mb-4">Create Your Resume</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="id_name" class="form-label">Full Name</label>
+          {{ form.name|add_class:"form-control" }}
+          {% if form.name.errors %}
+            <div class="text-danger small">{{ form.name.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="id_dob" class="form-label">Date of Birth</label>
+          {{ form.dob|add_class:"form-control" }}
+          {% if form.dob.errors %}
+            <div class="text-danger small">{{ form.dob.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="id_contact" class="form-label">Phone Number</label>
+          {{ form.contact|add_class:"form-control" }}
+          {% if form.contact.errors %}
+            <div class="text-danger small">{{ form.contact.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="id_email" class="form-label">Email Address</label>
+          {{ form.email|add_class:"form-control" }}
+          {% if form.email.errors %}
+            <div class="text-danger small">{{ form.email.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="id_linkedin" class="form-label">LinkedIn Profile</label>
+          {{ form.linkedin|add_class:"form-control" }}
+          {% if form.linkedin.errors %}
+            <div class="text-danger small">{{ form.linkedin.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="id_adress" class="form-label">Address</label>
+          {{ form.adress|add_class:"form-control" }}
+          {% if form.adress.errors %}
+            <div class="text-danger small">{{ form.adress.errors }}</div>
+          {% endif %}
+        </div>
+
+        <!-- Education -->
+        <hr class="mt-4">
+        <h5 class="text-secondary mt-3">Education</h5>
+
+        <div class="col-md-6 mb-3">
+          <label for="id_matriculation" class="form-label">Matriculation</label>
+          {{ form.matriculation|add_class:"form-control" }}
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="id_intermediate" class="form-label">12th</label>
+          {{ form.intermediate|add_class:"form-control" }}
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="id_graduation" class="form-label">Graduation</label>
+          {{ form.graduation|add_class:"form-control" }}
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="id_postgraduation" class="form-label">Postgraduation</label>
+          {{ form.postgraduation|add_class:"form-control" }}
+        </div>
+
+        <!-- Job Info -->
+        <hr class="mt-4">
+        <h5 class="text-secondary mt-3">Job Info</h5>
+
+        <div class="col-md-6 mb-3">
+          <label for="id_skills" class="form-label">Skills</label>
+          {{ form.skills|add_class:"form-control" }}
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="id_experience" class="form-label">Experience</label>
+          {{ form.experience|add_class:"form-control" }}
+        </div>
+
+        <div class="col-12 mb-3">
+          <label for="id_summary" class="form-label">Carrer Objectives</label>
+          {{ form.summary|add_class:"form-control" }}
+        </div>
+
+        <div class="col-12 mb-3">
+          <label for="id_projects" class="form-label">Projects</label>
+          {{ form.projects|add_class:"form-control" }}
+        </div>
+
+        <div class="col-12 mb-3">
+          <label for="id_additional_qualifications" class="form-label">Additional Qualifications</label>
+          {{ form.additional_qualifications|add_class:"form-control" }}
+        </div>
+
+        <!-- Other Info -->
+        <hr class="mt-4">
+        <h5 class="text-secondary mt-3">Other Info</h5>
+
+        <div class="col-md-6 mb-3">
+          <label for="id_languages" class="form-label">Languages</label>
+          {{ form.languages|add_class:"form-control" }}
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="id_hobbies" class="form-label">Hobbies</label>
+          {{ form.hobbies|add_class:"form-control" }}
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary px-4">Preview Resume</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+{% endblock %}

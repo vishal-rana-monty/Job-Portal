@@ -1,0 +1,98 @@
+{% extends "common/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4 text-primary"> Job Seeker Profile</h2>
+  <div class="d-flex justify-content-center">
+    <div class="card shadow-lg rounded-4 p-5 bg-white w-100" style="max-width: 700px;">
+
+
+      <form method="post" enctype="multipart/form-data" class="space-y-6">
+        {% csrf_token %}
+
+        <div class="mb-3">
+  <label class="form-label fw-semibold">Profile Picture</label>
+  <input type="file" name="profile_pic" class="form-control" accept="image/*">
+  
+  {% if user.jobseeker.profile_pic %}
+    <div class="mt-2">
+      <img src="{{ user.jobseeker.profile_pic.url }}" alt="Profile Picture"
+           class="rounded shadow-sm" style="width: 120px; height: 120px; object-fit: cover;">
+    </div>
+  {% endif %}
+</div>
+
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Full Name</label>
+          <input type="text" name="full_name" value="{{ user.jobseeker.full_name }}" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Email</label>
+          <input type="email" name="email" value="{{ user.email }}" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Education</label>
+          <textarea name="education" rows="3" class="form-control">{{ user.jobseeker.education }}</textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Experience</label>
+          <textarea name="experience" rows="3" class="form-control">{{ user.jobseeker.experience }}</textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Skills</label>
+          <input type="text" name="skills" value="{{ user.jobseeker.skills }}" class="form-control" placeholder="e.g., Python, Django, SQL">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Upload Resume</label>
+          <input type="file" name="resume" accept=".pdf,.doc,.docx" class="form-control">
+          {% if user.jobseeker.resume %}
+            <a href="{{ user.jobseeker.resume.url }}" target="_blank" class="d-block mt-2 text-primary">View Current Resume</a>
+          {% endif %}
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Address</label>
+          <textarea name="address" rows="2" class="form-control">{{ user.jobseeker.address }}</textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Contact Number</label>
+          <div class="input-group">
+            <span class="input-group-text">+91</span>
+            <input type="text" name="contact_number" value="{{ user.jobseeker.contact_number }}" class="form-control">
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label fw-semibold">LinkedIn Profile</label>
+          <input type="url" name="linkedin" value="{{ user.jobseeker.linkedin }}" class="form-control" placeholder="https://www.linkedin.com/in/yourprofile">
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label fw-semibold">Show profile publicly to coampanies?</label>
+          <select name="is_public" class="form-select">
+            <option value="True" {% if user.jobseekr.is_public %}selected{% endif %}>Yes</option>
+            <option value="False" {% if not user.jobseeker.is_public %}selected{% endif %}>No</option>
+          </select>
+        </div>
+         
+
+        <div class="d-flex justify-content-center gap-3 mt-4">
+             <button type="submit" class="btn btn-success rounded-pill fw-bold px-4 py-2 shadow-sm">
+                        Save Changes
+                    </button>
+                   <a href="{% url 'dashboard:dashboard' %}" class="btn btn-outline-secondary rounded-pill fw-bold px-4 py-2 shadow-sm">
+                  <i class="fa fa-times me-2"></i> Cancel
+                   </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

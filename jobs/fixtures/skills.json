@@ -1,0 +1,905 @@
+[
+{
+    "model": "jobs.skill",
+    "pk": 1,
+    "fields": {
+        "skill_name": "Java Programming"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 2,
+    "fields": {
+        "skill_name": "Python"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 3,
+    "fields": {
+        "skill_name": "Bootstrap"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 4,
+    "fields": {
+        "skill_name": "Online Marketing"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 5,
+    "fields": {
+        "skill_name": "Email Marketing"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 6,
+    "fields": {
+        "skill_name": "HTML, CSS, Java Script"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 7,
+    "fields": {
+        "skill_name": "Python , Django, flask, FAST API, Mongo DB"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 8,
+    "fields": {
+        "skill_name": "No Skill Required"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 9,
+    "fields": {
+        "skill_name": "Driving, Riding"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 10,
+    "fields": {
+        "skill_name": "Version Control, Git Hub, Typing"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 11,
+    "fields": {
+        "skill_name": "Mongo DB, Express.js,React.js, Node.js"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 12,
+    "fields": {
+        "skill_name": "C"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 13,
+    "fields": {
+        "skill_name": "C++"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 14,
+    "fields": {
+        "skill_name": "C #"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 15,
+    "fields": {
+        "skill_name": "Spring Bot"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 16,
+    "fields": {
+        "skill_name": "Data Analysis"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 17,
+    "fields": {
+        "skill_name": "Data Science"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 18,
+    "fields": {
+        "skill_name": "Machine Leraning"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 19,
+    "fields": {
+        "skill_name": "Deep Learning"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 20,
+    "fields": {
+        "skill_name": "Power BI"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 21,
+    "fields": {
+        "skill_name": "Artificial Intelligence"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 22,
+    "fields": {
+        "skill_name": "Excel (Advanced)"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 23,
+    "fields": {
+        "skill_name": "Git/GitHub"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 24,
+    "fields": {
+        "skill_name": "Docker"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 25,
+    "fields": {
+        "skill_name": "VS Code"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 26,
+    "fields": {
+        "skill_name": "Adobe Photoshop"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 27,
+    "fields": {
+        "skill_name": "Android Studio"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 28,
+    "fields": {
+        "skill_name": "Full-Stack Development"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 29,
+    "fields": {
+        "skill_name": "Front-End Development"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 30,
+    "fields": {
+        "skill_name": "Back-End Development"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 31,
+    "fields": {
+        "skill_name": "RESTful APIs"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 32,
+    "fields": {
+        "skill_name": "Progressive Web Apps (PWA)"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 33,
+    "fields": {
+        "skill_name": "Mobile App Development (Android/iOS)"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 34,
+    "fields": {
+        "skill_name": "AWS"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 35,
+    "fields": {
+        "skill_name": "Microsoft Azure"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 36,
+    "fields": {
+        "skill_name": "Google Cloud Platform"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 37,
+    "fields": {
+        "skill_name": "DevOps"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 38,
+    "fields": {
+        "skill_name": "Network Security"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 39,
+    "fields": {
+        "skill_name": "Ethical Hacking"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 40,
+    "fields": {
+        "skill_name": "Penetration Testing"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 41,
+    "fields": {
+        "skill_name": "Security Audits"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 42,
+    "fields": {
+        "skill_name": "Communication Skills"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 43,
+    "fields": {
+        "skill_name": "Leadership"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 44,
+    "fields": {
+        "skill_name": "Teamwork"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 45,
+    "fields": {
+        "skill_name": "Problem Solving"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 46,
+    "fields": {
+        "skill_name": "Critical Thinking"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 47,
+    "fields": {
+        "skill_name": "Time Management"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 48,
+    "fields": {
+        "skill_name": "Adaptability"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 49,
+    "fields": {
+        "skill_name": "Conflict Resolution"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 50,
+    "fields": {
+        "skill_name": "Creativity"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 51,
+    "fields": {
+        "skill_name": "Emotional Intelligence"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 52,
+    "fields": {
+        "skill_name": "Project Management"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 53,
+    "fields": {
+        "skill_name": "Agile/Scrum"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 54,
+    "fields": {
+        "skill_name": "Business Analysis"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 55,
+    "fields": {
+        "skill_name": "Strategic Planning"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 56,
+    "fields": {
+        "skill_name": "Product Management"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 57,
+    "fields": {
+        "skill_name": "Customer Relationship Management (CRM)"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 58,
+    "fields": {
+        "skill_name": "Digital Marketing"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 59,
+    "fields": {
+        "skill_name": "SEO/SEM"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 60,
+    "fields": {
+        "skill_name": "Content Writing"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 61,
+    "fields": {
+        "skill_name": "Financial Analysis"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 62,
+    "fields": {
+        "skill_name": "Electrical Work"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 63,
+    "fields": {
+        "skill_name": "Plumbing"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 64,
+    "fields": {
+        "skill_name": "Carpentry"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 65,
+    "fields": {
+        "skill_name": "Mechanical Repair"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 66,
+    "fields": {
+        "skill_name": "Welding"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 67,
+    "fields": {
+        "skill_name": "Driving (LMV/HMV)"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 68,
+    "fields": {
+        "skill_name": "Forklift Operation"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 69,
+    "fields": {
+        "skill_name": "Basic tool handling"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 70,
+    "fields": {
+        "skill_name": "Basic math"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 71,
+    "fields": {
+        "skill_name": "Blueprint reading"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 72,
+    "fields": {
+        "skill_name": "Wiring"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 73,
+    "fields": {
+        "skill_name": "piping"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 74,
+    "fields": {
+        "skill_name": "3D modeling"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 75,
+    "fields": {
+        "skill_name": "Portfolio Development"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 76,
+    "fields": {
+        "skill_name": "Storytelling"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 77,
+    "fields": {
+        "skill_name": "Acting techniques"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 78,
+    "fields": {
+        "skill_name": "Improvisation"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 79,
+    "fields": {
+        "skill_name": "Medical Knowledge"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 80,
+    "fields": {
+        "skill_name": "Clinical Skills"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 81,
+    "fields": {
+        "skill_name": "Patient Care"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 82,
+    "fields": {
+        "skill_name": "Classroom Management"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 83,
+    "fields": {
+        "skill_name": "Accounting Knowledge"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 84,
+    "fields": {
+        "skill_name": "Investment Strategies"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 85,
+    "fields": {
+        "skill_name": "Market Research"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 86,
+    "fields": {
+        "skill_name": "Brand Strategy"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 87,
+    "fields": {
+        "skill_name": "Data Analytics"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 88,
+    "fields": {
+        "skill_name": "Graphic Design"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 89,
+    "fields": {
+        "skill_name": "Negotiation"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 90,
+    "fields": {
+        "skill_name": "Ethics & Compliance"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 91,
+    "fields": {
+        "skill_name": "Safety Protocols"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 92,
+    "fields": {
+        "skill_name": "Customer Service"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 93,
+    "fields": {
+        "skill_name": "Event Planning"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 94,
+    "fields": {
+        "skill_name": "Crisis Management"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 95,
+    "fields": {
+        "skill_name": "Patience & Empathy"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 96,
+    "fields": {
+        "skill_name": "CRM Software"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 97,
+    "fields": {
+        "skill_name": "Navigation Skills"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 98,
+    "fields": {
+        "skill_name": "Vehicle Maintenance"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 99,
+    "fields": {
+        "skill_name": "Logistics Software"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 100,
+    "fields": {
+        "skill_name": "Sales Techniques"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 101,
+    "fields": {
+        "skill_name": "Customer Relationship Management"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 102,
+    "fields": {
+        "skill_name": "Product Knowledge"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 103,
+    "fields": {
+        "skill_name": "Negotiation Skills"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 104,
+    "fields": {
+        "skill_name": "Networking"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 105,
+    "fields": {
+        "skill_name": "Recruitment & Talent Acquisition"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 106,
+    "fields": {
+        "skill_name": "Compliance & Employment Law"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 107,
+    "fields": {
+        "skill_name": "Payroll & Benefits Management"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 108,
+    "fields": {
+        "skill_name": "Market Analysis"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 109,
+    "fields": {
+        "skill_name": "Property Management"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 110,
+    "fields": {
+        "skill_name": "Content Creation"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 111,
+    "fields": {
+        "skill_name": "Art Direction"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 112,
+    "fields": {
+        "skill_name": "Lab Skills"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 113,
+    "fields": {
+        "skill_name": "Policy Analysis"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 114,
+    "fields": {
+        "skill_name": "Research & Data Analysis"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 115,
+    "fields": {
+        "skill_name": "Crop Science"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 116,
+    "fields": {
+        "skill_name": "Animal Husbandry"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 117,
+    "fields": {
+        "skill_name": "Sustainable Farming"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 118,
+    "fields": {
+        "skill_name": "Agroecology"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 119,
+    "fields": {
+        "skill_name": "Agricultural Machinery"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 120,
+    "fields": {
+        "skill_name": "Drone Technology"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 121,
+    "fields": {
+        "skill_name": "Irrigation Systems"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 122,
+    "fields": {
+        "skill_name": "Farm Management Software"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 123,
+    "fields": {
+        "skill_name": "Precision Agriculture"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 124,
+    "fields": {
+        "skill_name": "Soil Testing & Analysis"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 125,
+    "fields": {
+        "skill_name": "Machine Operation"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 126,
+    "fields": {
+        "skill_name": "Manufacturing Processes"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 127,
+    "fields": {
+        "skill_name": "Maintenance & Troubleshooting"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 128,
+    "fields": {
+        "skill_name": "Automation & Robotics"
+    }
+},
+{
+    "model": "jobs.skill",
+    "pk": 129,
+    "fields": {
+        "skill_name": "Inspection & Testing"
+    }
+}
+]

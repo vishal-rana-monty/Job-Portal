@@ -1,0 +1,210 @@
+[
+{
+    "model": "jobs.jobcategory",
+    "pk": 1,
+    "fields": {
+        "name": "General",
+        "icon": "fa fa-building"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 2,
+    "fields": {
+        "name": "Marketing",
+        "icon": "fa fa-bullhorn"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 3,
+    "fields": {
+        "name": "Customer Service",
+        "icon": "fa fa-headset"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 4,
+    "fields": {
+        "name": "Human Resource",
+        "icon": "fa fa-user-tie"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 5,
+    "fields": {
+        "name": "Project Management",
+        "icon": "fa fa-tasks"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 6,
+    "fields": {
+        "name": "Business Development",
+        "icon": "fa fa-chart-line"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 7,
+    "fields": {
+        "name": "Sales & Commununication",
+        "icon": "fa fa-handshake"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 8,
+    "fields": {
+        "name": "Teaching & Education",
+        "icon": "fa fa-book-reader"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 9,
+    "fields": {
+        "name": "Design & Techonology",
+        "icon": "fa fa-drafting-compass"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 10,
+    "fields": {
+        "name": "Software Techonology",
+        "icon": "fa fa-laptop-code"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 11,
+    "fields": {
+        "name": "Healthcare",
+        "icon": "fa fa-heartbeat"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 12,
+    "fields": {
+        "name": "Engineering",
+        "icon": "fa fa-cogs"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 14,
+    "fields": {
+        "name": "Information Technology",
+        "icon": "fa fa-laptop-code"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 16,
+    "fields": {
+        "name": "Education",
+        "icon": "fa fa-graduation-cap"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 17,
+    "fields": {
+        "name": "Finance",
+        "icon": "fa fa-chart-line"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 19,
+    "fields": {
+        "name": "Legal",
+        "icon": "fa fa-balance-scale"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 20,
+    "fields": {
+        "name": "Construction",
+        "icon": "fa fa-hard-hat"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 21,
+    "fields": {
+        "name": "Hospitality",
+        "icon": "fa fa-hotel"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 23,
+    "fields": {
+        "name": "Transportation",
+        "icon": "fa fa-truck"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 24,
+    "fields": {
+        "name": "Sales",
+        "icon": "fa fa-tags"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 26,
+    "fields": {
+        "name": "Real Estate",
+        "icon": "fa fa-home"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 27,
+    "fields": {
+        "name": "Media & Arts",
+        "icon": "fa fa-paint-brush"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 28,
+    "fields": {
+        "name": "Science & Research",
+        "icon": "fa fa-microscope"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 29,
+    "fields": {
+        "name": "Government",
+        "icon": "fa fa-landmark"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 30,
+    "fields": {
+        "name": "Agriculture",
+        "icon": "fa fa-seedling"
+    }
+},
+{
+    "model": "jobs.jobcategory",
+    "pk": 31,
+    "fields": {
+        "name": "Manufacturing",
+        "icon": "fa fa-industry"
+    }
+}
+]

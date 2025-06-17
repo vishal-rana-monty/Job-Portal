@@ -1,0 +1,58 @@
+{% extends "common/base.html" %}
+
+{% block title %}
+  My Job Posts
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 pt-5">
+    <h2 class="text-center mb-4 text-success fw-bold">My Job Posts</h2>
+    <div class="text-center mb-4">
+        <a href="{% url 'jobs:job_post' %}" class="btn btn-primary px-4"><i class="fas fa-plus me-2"></i>Post a New Job</a>
+    </div>
+
+    <div class="row g-4">
+        {% for job in jobs %}
+        <div class="col-12 job-container">
+            <div class="job-item d-flex justify-content-between align-items-center p-4 shadow-sm bg-white rounded border">
+
+                <!-- Left Section (Logo + Info) -->
+                <div class="d-flex align-items-center">
+                    {% if job.company.logo %}
+                        <img src="{{ job.company.logo.url }}" alt="Company Logo" class="rounded border me-3" style="width: 80px; height: 80px; object-fit: cover;">
+                    {% else %}
+                        <div class="d-flex justify-content-center align-items-center rounded bg-light border me-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-building fa-2x text-secondary"></i>
+                        </div>
+                    {% endif %}
+                    <div class="text-start">
+                        <h5 class="fw-bold mb-2">{{ job.title }}</h5>
+                        <span class="me-3 text-muted"><i class="fa fa-th-large text-primary me-1"></i>{{ job.category }}</span>
+                        <span class="me-3 text-muted"><i class="fa fa-map-marker-alt text-primary me-1"></i>{{ job.location }}</span>
+                        <span class="me-3 text-muted"><i class="far fa-clock text-primary me-1"></i>{{ job.job_type }}</span>
+                        <span class="me-0 text-muted"><i class="far fa-money-bill-alt text-primary me-1"></i>{{ job.salary }}</span>
+                    </div>
+                </div>
+
+                <!-- Right Section (Actions) -->
+                <div class="d-flex flex-column align-items-end text-end">
+                    <div class="d-flex mb-2">
+                        <a href="{% url 'jobs:job_edit' job.id %}" class="btn btn-warning btn-sm me-2"><i class="fas fa-edit"></i> Edit</a>
+                        <a href="{% url 'jobs:job_delete' job.id %}" class="btn btn-danger btn-sm me-2"><i class="fas fa-trash-alt"></i> Delete</a>
+                        <a href="{% url 'jobs:job_applications' job.id %}" class="btn btn-secondary btn-sm"><i class="fas fa-users"></i> Applications</a>
+                    </div>
+                    <small class="text-muted"><i class="far fa-calendar-alt text-primary me-1"></i>Posted on: {{ job.posted_at|date:"F d, Y" }}</small>
+                </div>
+
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p class="text-danger">You haven't posted any jobs yet.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

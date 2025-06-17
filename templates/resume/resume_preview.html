@@ -1,0 +1,49 @@
+{% extends "common/base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+  <div class="card shadow p-4 rounded-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="text-primary">{{ resume.name }}</h2>
+      
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <p><strong>Date of Birth:</strong> {{ resume.dob }}</p>
+        <p><strong>Contact:</strong> {{ resume.contact }}</p>
+        <p><strong>Email:</strong> {{ resume.email }}</p>
+        <p><strong>LinkedIn:</strong> <a href="{{ resume.linkedin }}">{{ resume.linkedin }}</a></p>
+        <p><strong>Address:</strong> {{ resume.address }}</p>
+      </div>
+    </div>
+
+    <hr>
+    <h4 class="text-secondary">Education</h4>
+    <ul class="list-group mb-3">
+      <li class="list-group-item"><strong>Matriculation:</strong> {{ resume.matriculation }}</li>
+      <li class="list-group-item"><strong>12th:</strong> {{ resume.intermediate }}</li>
+      <li class="list-group-item"><strong>Graduation:</strong> {{ resume.graduation }}</li>
+      <li class="list-group-item"><strong>Postgraduation:</strong> {{ resume.postgraduation }}</li>
+    </ul>
+
+    <h4 class="text-secondary">Job Info</h4>
+    <ul class="list-group mb-3">
+      <li class="list-group-item"><strong>Skills:</strong> {{ resume.skills }}</li>
+      <li class="list-group-item"><strong>Experience:</strong> {{ resume.experience }}</li>
+      <li class="list-group-item"><strong>Career Objectives:</strong> {{ resume.summary }}</li>
+      <li class="list-group-item"><strong>Projects:</strong> {{ resume.projects }}</li>
+      <li class="list-group-item"><strong>Additional Qualifications:</strong> {{ resume.additional_qualifications }}</li>
+    </ul>
+
+    <h4 class="text-secondary">Other Info</h4>
+    <ul class="list-group mb-4">
+      <li class="list-group-item"><strong>Languages:</strong> {{ resume.languages }}</li>
+      <li class="list-group-item"><strong>Hobbies:</strong> {{ resume.hobbies }}</li>
+    </ul>
+
+    <a href="{% url 'resume:resume_pdf' resume.id %}" class="btn btn-success">⬇ Download PDF</a>
+  </div>
+</div>
+{% endblock %}
